@@ -3,15 +3,16 @@
     <head>
         <title>Spring Security Example </title>
     </head>
-    <body>
-    <br>Logging page<br>
-        <form action="/login}" method="post"><br>
+    <body><br>
+        Add new user<br>
+        {{#message}}
+            {{message}}
+        {{/message}}<br>
+        <form action="/registration}" method="post">
             <div><label> User Name : <input type="text" name="username"/> </label></div><br>
             <div><label> Password: <input type="password" name="password"/> </label></div><br>
             <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-            <div><input type="submit" value="Sign In"/></div>
+            <div><input type="submit" value="Sign In"/></div><br>
         </form>
-    <br><br>
-    <a href="/registration">Sign up </a>
     </body>
 </html>
