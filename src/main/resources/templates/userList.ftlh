@@ -2,9 +2,7 @@
 <#import "parts/gotomain.ftlh" as g>
 
 <@c.page>
-
-
-  <font size="21" color="#00008b" >List of users</font><br>
+     <font size="21" color="#00008b" >List of users</font><br>
   <@g.gototmain/><br><br>
     <table>
         <thead>

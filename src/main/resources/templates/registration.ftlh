@@ -2,10 +2,11 @@
 <#import "parts/login.ftlh" as l>
 
 
+
 <@c.page>
-   <font size="21" color="#8b0000">Add new user</font> <br>
+      <font size="21" color="#8b0000">Add new user</font> <br>
 <br>
-    ${message}
+    ${message!}
 <br>
     <@l.login "/registratio n" />
 </@c.page>

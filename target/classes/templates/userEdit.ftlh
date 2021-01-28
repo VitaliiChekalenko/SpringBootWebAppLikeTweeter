@@ -1,10 +1,10 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/gotomain.ftlh" as g>
+
 
 <@c.page>
 
    <font size="21">User editor</font> <br><br>
-    <@g.gototmain/> <br>
+
     <form action="/user" method="post">
         <input type="text" name="username" value="${user.username}"><br>
         <#list roles as role>
