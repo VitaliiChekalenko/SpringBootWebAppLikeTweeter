@@ -4,9 +4,8 @@
 
 
 <@c.page>
-      <font size="21" color="#8b0000">Add new user</font> <br>
-<br>
+   <div class="mb-1">Add new user</div>
+
     ${message!}
-<br>
-    <@l.login "/registratio n" />
+    <@l.login "/registration" true/>
 </@c.page>

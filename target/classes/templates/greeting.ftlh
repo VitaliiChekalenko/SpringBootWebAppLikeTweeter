@@ -3,7 +3,6 @@
 
 
 <@c.page>
-    <@g.gototmain/> <br>
-<div><font size="21" color="#006400">Hello, user</font></div><br>
-
+<h5>Hello, guest!</h5>
+<div>This is a simple clone of Twitter</div>
 </@c.page>

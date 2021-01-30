@@ -4,8 +4,5 @@
 
 
 <@c.page>
-    <br><font size="21">Login page</font><br>
-    <@l.login "/login" /><br>
-    <a href="/registration"> Sign up </a>
-
+    <@l.login "/login" false/>
 </@c.page>
