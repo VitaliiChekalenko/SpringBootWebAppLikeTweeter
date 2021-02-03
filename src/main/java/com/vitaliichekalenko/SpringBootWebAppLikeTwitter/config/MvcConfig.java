@@ -12,15 +12,13 @@ public class MvcConfig implements WebMvcConfigurer {
     private String uploadPath;
 
     public void addViewControllers(ViewControllerRegistry registry) {
-
         registry.addViewController("/login").setViewName("login");
-
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/img/**")
-                .addResourceLocations("file:/" + uploadPath + "/");
+                .addResourceLocations("file://" + uploadPath + "/");
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
     }

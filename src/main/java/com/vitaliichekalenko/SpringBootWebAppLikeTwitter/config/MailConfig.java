@@ -10,7 +10,6 @@ import java.util.Properties;
 
 @Configuration
 public class MailConfig {
-
     @Value("${spring.mail.host}")
     private String host;
 
@@ -26,15 +25,11 @@ public class MailConfig {
     @Value("${spring.mail.protocol}")
     private String protocol;
 
-//    @Value("${spring.mail.debug}")
-//    private String debug;
-    @Value("${spring.mail.properties.mail.smtp.auth}")
-    private String auth;
-    @Value("${spring.mail.properties.mail.smtp.starttls.enable}")
-    private String enable;
+    @Value("${mail.debug}")
+    private String debug;
 
     @Bean
-    public JavaMailSender getMailSender(){
+    public JavaMailSender getMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         mailSender.setHost(host);
@@ -45,12 +40,9 @@ public class MailConfig {
         Properties properties = mailSender.getJavaMailProperties();
 
         properties.setProperty("mail.transport.protocol", protocol);
-//        properties.setProperty("mail.debug", debug);
-        properties.setProperty("mail.smtp.auth", auth);
-        properties.setProperty("mail.smtp.starttls.enable", enable);
-        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        properties.setProperty("mail.smtp.starttls.enable", "true");
-      //  properties.setProperty("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.setProperty("mail.debug", debug);
 
         return mailSender;
     }

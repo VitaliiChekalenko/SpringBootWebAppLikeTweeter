@@ -20,7 +20,6 @@ import java.util.UUID;
 
 @Controller
 public class MainController {
-
     @Autowired
     private MessageRepo messageRepo;
 
@@ -29,7 +28,6 @@ public class MainController {
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
-
         return "greeting";
     }
 
@@ -54,27 +52,31 @@ public class MainController {
             @AuthenticationPrincipal User user,
             @RequestParam String text,
             @RequestParam String tag, Map<String, Object> model,
-            @RequestParam("file") MultipartFile file) throws IOException {
+            @RequestParam("file") MultipartFile file
+    ) throws IOException {
         Message message = new Message(text, tag, user);
 
-            if (file != null && !file.getOriginalFilename().isEmpty()) {
-                File uploadDir = new File(uploadPath);
+        if (file != null && !file.getOriginalFilename().isEmpty()) {
+            File uploadDir = new File(uploadPath);
 
-                if(!uploadDir.exists()){
-                    uploadDir.mkdir();
-                }
-                String uuidFile = UUID.randomUUID().toString();
-                String resultFilename = uuidFile + "." + file.getOriginalFilename();
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
 
-                file.transferTo(new File(uploadPath + "/" + resultFilename));
+            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = uuidFile + "." + file.getOriginalFilename();
+
+            file.transferTo(new File(uploadPath + "/" + resultFilename));
 
             message.setFilename(resultFilename);
         }
 
         messageRepo.save(message);
-        Iterable<Message> messages = messageRepo.findAll();
-        model.put("messages", messages);
-        return "redirect:/main";
-    }
 
+        Iterable<Message> messages = messageRepo.findAll();
+
+        model.put("messages", messages);
+
+        return "main";
+    }
 }
